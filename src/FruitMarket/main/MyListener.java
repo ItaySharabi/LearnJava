@@ -1,6 +1,6 @@
-package main;
+package FruitMarket.main;
 
-import model.Fruit;
+import FruitMarket.model.Fruit;
 
 public interface MyListener {
     public void onClickListener(Fruit fruit);

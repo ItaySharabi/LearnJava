@@ -1,4 +1,4 @@
-package model;
+package FruitMarket.model;
 
 public class Fruit {
     private String name;

@@ -1,4 +1,4 @@
-package Controller;
+package FruitMarket.Controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 public class AccountController {
 // Create a class for your FXML file.
-// Change views/account_page.fxml so it now has fx:controller="Controller.AccountPage"
+// Change FruitMarket.views/account_page.fxml so it now has fx:controller="FruitMarket.Controller.AccountPage"
 
     @FXML
     private Button moveToMarketButton;
@@ -22,7 +22,7 @@ public class AccountController {
         System.out.println("Move back to market --->");
 
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("/views/market.fxml"));
+        fxmlLoader.setLocation(getClass().getResource("/FruitMarket/views/market.fxml"));
 
         try {
             Parent root = fxmlLoader.load();

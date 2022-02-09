@@ -1,13 +1,13 @@
-package Controller;
+package FruitMarket.Controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import main.Main;
-import main.MyListener;
-import model.Fruit;
+import FruitMarket.main.Main;
+import FruitMarket.main.MyListener;
+import FruitMarket.model.Fruit;
 
 public class ItemController {
     @FXML
