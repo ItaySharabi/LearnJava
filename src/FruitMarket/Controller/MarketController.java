@@ -213,10 +213,18 @@ public class MarketController implements Initializable {
         System.out.println("searching...");
 
         grid = new GridPane();
-        fruits = getData()
-                .stream()
-                .filter(x -> x.getName().contains(searchText.getText()))
-                .collect(Collectors.toList());
+        fruits = new ArrayList<>();
+        List<Fruit> data = getData();
+        for (int i = 0; i < data.size(); i++) {
+            if (data.get(i).getName().toLowerCase().contains(searchText.getText().toLowerCase())) {
+                fruits.add(data.get(i));
+            }
+        }
+        // Same solution as th for loop in line 218:
+//        fruits = getData()
+//                .stream()
+//                .filter(x -> x.getName().contains(searchText.getText()))
+//                .collect(Collectors.toList());
         scroll.setContent(grid);
         setupItems();
     }
