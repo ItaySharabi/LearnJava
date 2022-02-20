@@ -15,8 +15,6 @@ public class AccountController {
     @FXML
     private Button moveToMarketButton;
 
-    private String username;
-
     @FXML
     private void backToMarket(MouseEvent mouseEvent) {
         System.out.println("Move back to market --->");
@@ -36,8 +34,8 @@ public class AccountController {
     }
 
     public void setData(String data) {
-        username = data;
 
-        System.out.println("Welcome to Account page:\nUsername: " + username);
+        System.out.println("Welcome to Account page:\n" +
+                "Data from MarketController: " + data);
     }
 }

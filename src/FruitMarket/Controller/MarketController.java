@@ -1,15 +1,20 @@
 package FruitMarket.Controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -24,8 +29,15 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class MarketController implements Initializable {
+
+    @FXML
+    private TextField searchText;
+
+    @FXML
+    private Button btnSearch;
 
     @FXML
     private VBox chosenFruitCard;
@@ -148,6 +160,10 @@ public class MarketController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         fruits.addAll(getData());
+        setupItems();
+    }
+
+    private void setupItems() {
         if (fruits.size() > 0) {
             setChosenFruit(fruits.get(0));
             myListener = new MyListener() {
@@ -189,6 +205,29 @@ public class MarketController implements Initializable {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void search(ActionEvent event) {
+        System.out.println("searching...");
+
+        grid = new GridPane();
+        fruits = getData()
+                .stream()
+                .filter(x -> x.getName().contains(searchText.getText()))
+                .collect(Collectors.toList());
+        scroll.setContent(grid);
+        setupItems();
+    }
+
+    @FXML
+    void onKeyTyped(KeyEvent event) {
+        if (searchText.getText().isEmpty()) {
+            grid = new GridPane();
+            scroll.setContent(grid);
+            fruits = new ArrayList<>(getData());
+            setupItems();
         }
     }
 
